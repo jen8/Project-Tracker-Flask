@@ -2,6 +2,7 @@ from flask import Flask, request, render_template
 
 import hackbright
 
+
 app = Flask(__name__)
 
 
@@ -10,8 +11,12 @@ def get_student():
     """Show information about a student."""
 
     github = request.args.get('github', 'jhacks')
+    # get_grades_by_github is a function in hackbright.py 
+    grades = hackbright.get_grades_by_github(github)
     first, last, github = hackbright.get_student_by_github(github)
-    html = render_template("student_info.html", first=first, last=last, github=github)
+    # Added grades variable in our student_info.html
+    
+    html = render_template("student_info.html", first=first, last=last, github=github, grades=grades)
     return html
 
 @app.route("/student-search")

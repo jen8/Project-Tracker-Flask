@@ -4,8 +4,22 @@
 </head>
 <body>
 <h1> {{ first }} {{ last }}</h1>
-
 <p>GitHub Account: {{ github }} </p>
+<ul>
+
+<!-- unpacking title and grade from grades (grades is a tuple)  -->
+{% for title, grade in grades %}
+    <li>{{ title}} : {{ grade }}</li>
+{% endfor %}
+
+<!-- {% for grade in grades %} -->
+    <!-- <li>{{grade[0]}} : {{grade[1]}}</li> -->
+<!-- {% endfor %} -->
+
+<!-- This is the second way to pull out project title and grade from our grades tuple, using indices -->
+
+</ul>
+
 
 </body>
 </html>
